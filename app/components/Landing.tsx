@@ -1,7 +1,13 @@
+import Image from "next/image"
+
 export default function Landing () {
     return (
         <div>
-            Landing
+            <Image
+                src={'/lizlanding.webp'}
+                fill
+                alt='landing'
+            />
         </div>
     )
 }
