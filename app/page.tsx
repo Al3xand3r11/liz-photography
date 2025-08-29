@@ -3,8 +3,9 @@
 import { useState, useEffect } from "react";
 import Lenis from "lenis";
 import { AnimatePresence } from "framer-motion";
-import Landing from "./components/Landing";
+import Landing from "./components/Landing/Landing";
 import Preloader from "./components/Preloader/preloader";
+import About from "./components/About/About";
 
 export default function Home() {
 
@@ -47,6 +48,7 @@ useEffect( () => {
         {isLoading && <Preloader />}
       </AnimatePresence>
       <Landing/>
+      <About />
     </main>
   );
 }

@@ -10,7 +10,7 @@ import { opacity, slideUp } from './anim';
 
 
 
-const words = ["Create", "Build", "Explore", "Inspire", "Dream", "Question", "Cultivate", "Welcome"]
+const words = ["Seen","By","Liz"]
 
 
 
