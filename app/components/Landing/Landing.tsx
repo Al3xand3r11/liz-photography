@@ -6,8 +6,8 @@ import { gsap } from "gsap"
 
 const images = [
     { src: '/lizlanding.webp', alt: 'Liz Portrait' },
-    { src: '/landscape2.webp', alt: 'Landscape Photography' },
-    { src: '/mountains.webp', alt: 'Mountain Landscape' }
+    { src: '/caro1.webp', alt: 'Landscape Photography' },
+    { src: '/caro2.webp', alt: 'Mountain Landscape' }
 ]
 
 export default function Landing() {
@@ -23,7 +23,7 @@ export default function Landing() {
     
     // Helper function to calculate slide position in pixels
     const getSlidePosition = useCallback((index: number) => {
-        const slideWidth = 1200 // Fixed slide width
+        const slideWidth = 1600 // Fixed slide width
         return -(slideWidth + gapSize) * index
     }, [gapSize])
     
@@ -103,7 +103,7 @@ export default function Landing() {
 
 
     return (
-        <div ref={containerRef} className="relative h-[80vh] w-11/12 mx-auto overflow-hidden mt-12 mb-12 px-8">
+        <div ref={containerRef} className="relative h-[80vh] w-full mx-auto overflow-hidden mt-12 mb-12 px-8">
             {/* Infinite Slideshow Container */}
             <div 
                 ref={slidesContainerRef}
@@ -114,7 +114,7 @@ export default function Landing() {
                     <div
                         key={`${image.src}-${index}`}
                         className="relative flex-shrink-0 h-full rounded-lg overflow-hidden"
-                        style={{ width: '1200px', minWidth: '1200px' }}
+                        style={{ width: '1600px', minWidth: '1600px' }}
                     >
             <Image
                             src={image.src}

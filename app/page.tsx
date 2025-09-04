@@ -6,6 +6,7 @@ import { AnimatePresence } from "framer-motion";
 import Landing from "./components/Landing/Landing";
 import Preloader from "./components/Preloader/preloader";
 import About from "./components/About/About";
+import FirstInfo from "./components/Info/FirstInfo";
 
 export default function Home() {
 
@@ -48,6 +49,7 @@ useEffect( () => {
         {isLoading && <Preloader />}
       </AnimatePresence>
       <Landing/>
+      <FirstInfo />
       <About />
     </main>
   );

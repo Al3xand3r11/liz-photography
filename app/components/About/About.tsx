@@ -3,9 +3,10 @@ import AboutInfo from "./components/aboutInfo";
 
 export default function About() {
     return(
-        <div className="grid grid-cols-2 gap-4 mx-auto max-w-7xl">
-            <AboutImage />
+        <div className="grid grid-cols-2 gap-4 mx-8 mt-12 h-screen">
             <AboutInfo />
+            <AboutImage />
+            
         </div>
     )
 
