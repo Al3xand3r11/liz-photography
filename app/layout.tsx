@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import NavBar from "./components/NavBar";
-import { Roboto_Serif } from "next/font/google";
+import { Raleway } from "next/font/google";
 
-const RobotoSerif = Roboto_Serif({
+const RalewayFont = Raleway({
   subsets: ["latin"],
   weight: 'variable',
 });
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${RobotoSerif} font-serif`}
+        className={`${RalewayFont} font-serif`}
       >
         <NavBar />
         {children}

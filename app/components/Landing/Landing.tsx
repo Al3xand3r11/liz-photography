@@ -7,7 +7,7 @@ import { gsap } from "gsap"
 const images = [
     { src: '/lizlanding.webp', alt: 'Liz Portrait' },
     { src: '/caro1.webp', alt: 'Landscape Photography' },
-    { src: '/caro2.webp', alt: 'Mountain Landscape' }
+    { src: '/baby.webp', alt: 'Mountain Landscape' }
 ]
 
 export default function Landing() {
@@ -23,7 +23,7 @@ export default function Landing() {
     
     // Helper function to calculate slide position in pixels
     const getSlidePosition = useCallback((index: number) => {
-        const slideWidth = 1600 // Fixed slide width
+        const slideWidth = 1800 // Fixed slide width
         return -(slideWidth + gapSize) * index
     }, [gapSize])
     
@@ -103,7 +103,7 @@ export default function Landing() {
 
 
     return (
-        <div ref={containerRef} className="relative h-[80vh] w-full mx-auto overflow-hidden mt-12 mb-12 px-8">
+        <div ref={containerRef} className="relative h-[100vh] w-full mx-auto overflow-hidden mb-12 ">
             {/* Infinite Slideshow Container */}
             <div 
                 ref={slidesContainerRef}
@@ -114,7 +114,7 @@ export default function Landing() {
                     <div
                         key={`${image.src}-${index}`}
                         className="relative flex-shrink-0 h-full rounded-lg overflow-hidden"
-                        style={{ width: '1600px', minWidth: '1600px' }}
+                        style={{ width: '1800px', minWidth: '1800px' }}
                     >
             <Image
                             src={image.src}
@@ -129,8 +129,6 @@ export default function Landing() {
             </div>
 
             {/* Fade Margins with page background color */}
-            <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#F9F4E8] via-[#F9F4E8]/60 to-transparent z-10 pointer-events-none" />
-            <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#F9F4E8] via-[#F9F4E8]/60 to-transparent z-10 pointer-events-none" />
 
             {/* Top fade */}
             <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#F9F4E8]/40 to-transparent z-10 pointer-events-none" />
@@ -201,11 +199,6 @@ export default function Landing() {
                     />
                 </svg>
             </button>
-
-            {/* Navigation Hint */}
-            <div className="absolute bottom-8 left-8 z-20 text-white/60 text-sm font-light tracking-wide pointer-events-none">
-                Use arrows to navigate
-            </div>
         </div>
     )
 }

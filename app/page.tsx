@@ -7,6 +7,8 @@ import Landing from "./components/Landing/Landing";
 import Preloader from "./components/Preloader/preloader";
 import About from "./components/About/About";
 import FirstInfo from "./components/Info/FirstInfo";
+import Works from "./components/Works/Works";
+import Contact from "./components/Contact/Contact";
 
 export default function Home() {
 
@@ -51,6 +53,11 @@ useEffect( () => {
       <Landing/>
       <FirstInfo />
       <About />
+      <Works />
+      <div className="h-screen flex justify-center items-center">
+        <h1 className="text-4xl font-bold">Ready to work with me?</h1>
+      </div>
+      <Contact />
     </main>
   );
 }
