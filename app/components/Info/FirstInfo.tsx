@@ -4,7 +4,7 @@ export default function FirstInfo() {
         <div className="text-black font-light text-md lg:text-lg mb-2">
             <h1>First Info Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</h1>
         </div>
-        <div className="text-[#835c33] font-bold text-lg lg:text-3xl mb-2">
+        <div className="text-[#835c33] font-light text-lg lg:text-3xl mb-2">
             <h1>Second Info Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.</h1>
         </div>
         <div className="text-black font-extralight text-md lg:text-lg mb-2">
