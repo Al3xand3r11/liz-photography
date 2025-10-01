@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 
 type CategoryKey = 'party' | 'action' | 'portrait' | 'commercial' | 'lifestyle' | 'bts' | 'family' | 'brands' | 'group' | 'running';
@@ -84,7 +85,9 @@ export default function DetailedWork({ selectedCategory, onClose }: DetailedWork
                     </h1>
                     <p className="text-center font-light text-md lg:text-3xl mb-2">{categoriesDescription.find(category => category.category === selectedCategory)?.description}</p>
                     <div className="flex flex-row gap-2 justify-center items-center text-center content-center">
+                    <Link href="#contact">
                     <button className="bg-[#835c33]/50 backdrop-blur-sm text-black px-8 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200 shadow-2xl">Book Now</button>
+                    </Link>
                     <button onClick={onClose} className="bg-white/20 backdrop-blur-sm text-black px-4 py-2 rounded-lg hover:bg-[#835c33]/30 transition-colors duration-200">Close</button>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ export default function NavBar() {
                 {/* Archive */}
                 <div className="flex-1 flex justify-center">
                     <Link 
-                        href="#archive" 
+                        href="/archives" 
                         className="text-white text-lg font-light tracking-wide hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
                     >
                         Archive
