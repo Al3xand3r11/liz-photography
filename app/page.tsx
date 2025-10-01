@@ -55,7 +55,7 @@ useEffect( () => {
       <About />
       <Works />
       <div className="h-screen flex justify-center items-center">
-        <h1 className="text-4xl font-bold">Ready to work with me?</h1>
+        <h1 className="font-medium text-[#835c33] transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">Ready to work with me?</h1>
       </div>
       <Contact />
     </main>

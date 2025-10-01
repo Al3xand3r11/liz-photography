@@ -3,11 +3,16 @@
 import Image from "next/image"
 import { useEffect, useRef, useState, useCallback } from "react"
 import { gsap } from "gsap"
+import { FaChevronDown } from "react-icons/fa"
+import { ScrollToPlugin } from "gsap/ScrollToPlugin"
+
+gsap.registerPlugin(ScrollToPlugin)
 
 const images = [
     { src: '/lizlanding.webp', alt: 'Liz Portrait' },
     { src: '/caro1.webp', alt: 'Landscape Photography' },
-    { src: '/baby.webp', alt: 'Mountain Landscape' }
+    { src: '/baby.webp', alt: 'Mountain Landscape' },
+    { src: '/group5.webp', alt: 'Group Photography' }
 ]
 
 export default function Landing() {
@@ -26,6 +31,18 @@ export default function Landing() {
         const slideWidth = 1800 // Fixed slide width
         return -(slideWidth + gapSize) * index
     }, [gapSize])
+
+    const scrollToAbout = useCallback(() => {
+        const aboutSection = document.querySelector('main > *:nth-child(3)') // About is the 3rd child after Landing and FirstInfo
+        if (aboutSection) {
+            const targetPosition = aboutSection.getBoundingClientRect().top + window.pageYOffset
+            gsap.to(window, {
+                scrollTo: targetPosition,
+                duration: 1, // Adjust this value: higher = slower (2 seconds)
+                ease: "power2.inOut" // Smooth easing
+            })
+        }
+    }, [])
     
 
     const startAutoPlay = useCallback(() => {
@@ -198,6 +215,13 @@ export default function Landing() {
                         strokeLinejoin="round"
                     />
                 </svg>
+            </button>
+
+            <button
+                onClick={scrollToAbout}
+                className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 rounded-full p-3 group"
+            >
+                <FaChevronDown className="text-white group-hover:scale-110 transition-transform duration-200" />
             </button>
         </div>
     )

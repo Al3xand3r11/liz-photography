@@ -2,17 +2,14 @@ import Image from "next/image"
 
 export default function Contact() {
     return (
-        <div className="relative h-screen w-full mt-12">
+        <div className="relative h-screen w-full mt-12" id="contact">
             <Image src={'/landscape.webp'} alt="Contact" fill className="object-cover" />
             <div className="absolute inset-0 bg-black/50 flex md:flex-row flex-col justify-center items-center p-8">
                 
                 {/* First Row - Contact Header */}
                 <div className="flex flex-col justify-center w-full mb-16">
                     <h1 className="text-white text-6xl font-bold tracking-wide">Get in touch</h1>
-                    <p className="text-white text-lg font-extralight">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos.
-                    </p>
+                    <p className="text-white text-3xl font-extralight">Got an idea? Let’s bring it to life.</p>
                 </div>
                 
                 {/* Second Row - Form */}
