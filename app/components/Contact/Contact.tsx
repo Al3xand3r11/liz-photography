@@ -14,8 +14,8 @@ export default function Contact() {
                 
                 {/* First Row - Contact Header */}
                 <div className="flex flex-col justify-center w-full mb-16">
-                    <h1 className="text-white text-6xl font-bold tracking-wide">Get in touch</h1>
-                    <p className="text-white text-3xl font-extralight">Got an idea? Let&apos;s bring it to life.</p>
+                    <h1 className="text-white md:text-6xl text-4xl font-bold tracking-wide">Get in touch</h1>
+                    <p className="text-white md:text-3xl text-xl font-extralight">Got an idea? Let&apos;s bring it to life.</p>
                 </div>
                 
                 {/* Second Row - Form */}

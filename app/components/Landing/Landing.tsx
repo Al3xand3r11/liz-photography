@@ -15,22 +15,47 @@ const images = [
     { src: '/group5.webp', alt: 'Group Photography' }
 ]
 
+const mobileImages = [
+    { src: '/action2.webp', alt: 'Liz Portrait' },
+    { src: '/brands4.webp', alt: 'Landscape Photography' },
+    { src: '/lifestyle4.webp', alt: 'Mountain Landscape' },
+]
+
+
 export default function Landing() {
     const [currentIndex, setCurrentIndex] = useState(0)
+    const [slideWidth, setSlideWidth] = useState(1800)
+    const [isMobile, setIsMobile] = useState(false)
+    const [isClient, setIsClient] = useState(false)
     const containerRef = useRef<HTMLDivElement>(null)
     const slidesContainerRef = useRef<HTMLDivElement>(null)
     const numberRef = useRef<HTMLDivElement>(null)
     const autoPlayRef = useRef<NodeJS.Timeout | null>(null)
 
     // Create infinite array (original + duplicates for seamless loop)
+    const infiniteMobileImages = [...mobileImages, ...mobileImages, ...mobileImages]
     const infiniteImages = [...images, ...images, ...images]
     const gapSize = 16 // gap-4 = 16px
     
+    // Helper function to get responsive slide width
+    const getSlideWidth = useCallback(() => {
+        if (typeof window !== 'undefined') {
+            const screenWidth = window.innerWidth
+            if (screenWidth < 768) { // Mobile
+                return screenWidth - 32 // Account for padding
+            } else if (screenWidth < 1024) { // Tablet
+                return screenWidth * 0.8
+            } else { // Desktop
+                return 1800
+            }
+        }
+        return 1800
+    }, [])
+    
     // Helper function to calculate slide position in pixels
     const getSlidePosition = useCallback((index: number) => {
-        const slideWidth = 1800 // Fixed slide width
         return -(slideWidth + gapSize) * index
-    }, [gapSize])
+    }, [slideWidth, gapSize])
 
     const scrollToAbout = useCallback(() => {
         const aboutSection = document.querySelector('main > *:nth-child(3)') // About is the 3rd child after Landing and FirstInfo
@@ -48,9 +73,10 @@ export default function Landing() {
     const startAutoPlay = useCallback(() => {
         if (autoPlayRef.current) clearInterval(autoPlayRef.current)
         autoPlayRef.current = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % images.length)
+            const currentImages = isMobile ? mobileImages : images
+            setCurrentIndex((prev) => (prev + 1) % currentImages.length)
         }, 4000)
-    }, [])
+    }, [isMobile])
 
     const stopAutoPlay = useCallback(() => {
         if (autoPlayRef.current) {
@@ -77,6 +103,31 @@ export default function Landing() {
             }
         })
     }, [getSlidePosition, stopAutoPlay, startAutoPlay])
+
+    // Handle client-side hydration and window resize
+    useEffect(() => {
+        // Mark as client-side after hydration
+        setIsClient(true)
+        
+        const handleResize = () => {
+            const newWidth = getSlideWidth()
+            const newIsMobile = window.innerWidth < 768
+            
+            // Reset currentIndex if switching between mobile/desktop to prevent out of bounds
+            if (newIsMobile !== isMobile) {
+                setCurrentIndex(0)
+            }
+            
+            setSlideWidth(newWidth)
+            setIsMobile(newIsMobile)
+        }
+
+        // Set initial width and mobile state
+        handleResize()
+        
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [getSlideWidth, isMobile])
 
     // Initialize slideshow
     useEffect(() => {
@@ -127,22 +178,42 @@ export default function Landing() {
                 className="flex h-full transition-none gap-4"
                 style={{ width: 'max-content' }}
             >
-                {infiniteImages.map((image, index) => (
-                    <div
-                        key={`${image.src}-${index}`}
-                        className="relative flex-shrink-0 h-full rounded-lg overflow-hidden"
-                        style={{ width: '1800px', minWidth: '1800px' }}
-                    >
-            <Image
-                            src={image.src}
-                            fill
-                            alt={image.alt}
-                            className="object-cover"
-                            priority={index < 3}
-                            draggable={false}
-                        />
-                    </div>
-                ))}
+                 {/* Conditional rendering for mobile images */}
+                 {isClient && isMobile ? (
+                     infiniteMobileImages.map((image, index) => (
+                         <div 
+                             key={`mobile-${image.src}-${index}`} 
+                             className="relative flex-shrink-0 h-full rounded-lg overflow-hidden" 
+                             style={{ width: `${slideWidth}px`, minWidth: `${slideWidth}px` }}
+                         >
+                             <Image 
+                                 src={image.src} 
+                                 fill 
+                                 alt={image.alt} 
+                                 className="object-contain" 
+                                 priority={index < 3} 
+                                 draggable={false} 
+                             />
+                         </div>
+                     ))
+                 ) : (
+                     infiniteImages.map((image, index) => (
+                         <div 
+                             key={`desktop-${image.src}-${index}`} 
+                             className="relative flex-shrink-0 h-full rounded-lg overflow-hidden" 
+                             style={{ width: `${slideWidth}px`, minWidth: `${slideWidth}px` }}
+                         >
+                             <Image 
+                                 src={image.src} 
+                                 fill 
+                                 alt={image.alt} 
+                                 className="object-cover" 
+                                 priority={index < 3} 
+                                 draggable={false} 
+                             />
+                         </div>
+                     ))
+                 )}
             </div>
 
             {/* Fade Margins with page background color */}
@@ -154,16 +225,16 @@ export default function Landing() {
             <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#F9F4E8]/40 to-transparent z-10 pointer-events-none" />
 
             {/* Large Overlapping Number Indicator */}
-            <div className="absolute top-8 right-8 z-20 pointer-events-none">
+            <div className="absolute top-4 md:top-8 right-4 md:right-8 z-20 pointer-events-none">
                 <div ref={numberRef} className="relative">
                     {/* Background number (larger, more transparent) */}
-                    <div className="text-white/10 text-[8rem] font-bold leading-none tracking-tighter">
+                    <div className="text-white/10 text-[4rem] md:text-[8rem] font-bold leading-none tracking-tighter">
                         {String(currentIndex + 1).padStart(2, '0')}
                     </div>
                     
                     {/* Foreground number (smaller, overlapping) */}
-                    <div className="absolute top-4 left-4 text-white/90 text-2xl font-light tracking-widest">
-                        {String(currentIndex + 1).padStart(2, '0')} / {String(images.length).padStart(2, '0')}
+                    <div className="absolute top-2 left-2 md:top-4 md:left-4 text-white/90 text-lg md:text-2xl font-light tracking-widest">
+                        {String(currentIndex + 1).padStart(2, '0')} / {String((isClient && isMobile ? mobileImages : images).length).padStart(2, '0')}
                     </div>
                 </div>
             </div>
@@ -171,17 +242,18 @@ export default function Landing() {
             {/* Navigation Arrows */}
             <button
                 onClick={() => {
-                    const newIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1
+                    const currentImages = isClient && isMobile ? mobileImages : images
+                    const newIndex = currentIndex === 0 ? currentImages.length - 1 : currentIndex - 1
                     slideToImage(newIndex)
                 }}
-                className="absolute left-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 rounded-full p-3 group"
+                className="absolute left-2 md:left-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 rounded-full p-2 md:p-3 group"
             >
                 <svg 
-                    width="24" 
-                    height="24" 
+                    width="20" 
+                    height="20" 
                     viewBox="0 0 24 24" 
                     fill="none" 
-                    className="text-white group-hover:scale-110 transition-transform duration-200"
+                    className="md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform duration-200"
                 >
                     <path 
                         d="M15 18L9 12L15 6" 
@@ -195,17 +267,18 @@ export default function Landing() {
             
             <button
                 onClick={() => {
-                    const newIndex = (currentIndex + 1) % images.length
+                    const currentImages = isClient && isMobile ? mobileImages : images
+                    const newIndex = (currentIndex + 1) % currentImages.length
                     slideToImage(newIndex)
                 }}
-                className="absolute right-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 rounded-full p-3 group"
+                className="absolute right-2 md:right-8 top-1/2 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 rounded-full p-2 md:p-3 group"
             >
                 <svg 
-                    width="24" 
-                    height="24" 
+                    width="20" 
+                    height="20" 
                     viewBox="0 0 24 24" 
                     fill="none" 
-                    className="text-white group-hover:scale-110 transition-transform duration-200"
+                    className="md:w-6 md:h-6 text-white group-hover:scale-110 transition-transform duration-200"
                 >
                     <path 
                         d="M9 18L15 12L9 6" 
