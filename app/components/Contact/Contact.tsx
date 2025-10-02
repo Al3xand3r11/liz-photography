@@ -1,11 +1,11 @@
 import Image from "next/image"
 import { submitContactForm } from "@/app/actions/formActions"
-import { useFormState } from "react-dom"
+import { useActionState } from "react"
 
 
 export default function Contact() {
 
-    const [state, onSubmit] = useFormState(submitContactForm, undefined);
+    const [state, onSubmit] = useActionState(submitContactForm, undefined);
 
     return (
         <div className="relative h-screen w-full mt-12" id="contact">

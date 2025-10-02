@@ -36,3 +36,8 @@ export async function submitContactForm(prevState: any, formData: FormData) {
         return { error: { general: ["Failed to send message. Please try again."] } }
     }
 }
+
+export async function getCustomers() {
+    const customers = await db.select().from(contactsTable)
+    return customers
+}
