@@ -6,7 +6,7 @@ export default function Page() {
 
     const [password, setPassword] = useState<string>('')
     const [isValidated, setIsValidated] = useState<boolean>(false)
-    const securePassword = process.env.DASHBOARD_PASSWORD
+    const securePassword = process.env.NEXT_PUBLIC_DASHBOARD_PASSWORD!
 
     const handleLogin = () => {
         if (password === securePassword){
