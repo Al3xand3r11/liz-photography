@@ -6,9 +6,9 @@ import { AnimatePresence } from "framer-motion";
 import Landing from "./components/Landing/Landing";
 import Preloader from "./components/Preloader/preloader";
 import About from "./components/About/About";
-import FirstInfo from "./components/Info/FirstInfo";
 import Works from "./components/Works/Works";
 import Contact from "./components/Contact/Contact";
+import FirstInfo from "./components/Info/FirstInfo";
 
 export default function Home() {
 
@@ -55,7 +55,7 @@ useEffect( () => {
       <About />
       <Works />
       <div className="h-screen flex justify-center items-center">
-        <h1 className="font-medium text-[#835c33] transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">Ready to work with me?</h1>
+        <h1 className="font-light text-[#835c33] transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">Ready to work with me?</h1>
       </div>
       <Contact />
     </main>

@@ -80,7 +80,7 @@ export default function DetailedWork({ selectedCategory, onClose }: DetailedWork
                     ))}
                 </div>
                 <div className="flex flex-col gap-2 text-center content-center col-span-1 w-3/5">
-                    <h1 className="font-medium hover:text-white/80 transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">
+                    <h1 className="font-light hover:text-white/80 transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">
                         {selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)}
                     </h1>
                     <p className="text-center font-light text-md lg:text-3xl mb-2">{categoriesDescription.find(category => category.category === selectedCategory)?.description}</p>

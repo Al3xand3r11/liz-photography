@@ -17,15 +17,15 @@ export default function Works() {
         <>
         <div className="mt-48" id="works">
         <div className="text-left ml-8">
-            <h1 className="font-medium text-[#835c33] hover:text-white/80 transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">Works</h1>
+            <h1 className="font-light text-[#835c33] hover:text-white/80 transition-colors duration-300 drop-shadow-lg text-lg lg:text-6xl mb-2 tracking-wider">Works</h1>
         </div>
          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-8 mt-12">
                  <div className="relative h-128 group cursor-pointer overflow-hidden rounded-lg" onClick={() => setSelectedCategory('party')}>
                      <Image src={'/party1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Party Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Party Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -36,8 +36,8 @@ export default function Works() {
                      <Image src={'/action1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Action Sports</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Action Sports</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -48,8 +48,8 @@ export default function Works() {
                      <Image src={'/portrait1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Portrait Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Portrait Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -60,8 +60,8 @@ export default function Works() {
                      <Image src={'/commercial1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Commercial Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Commercial Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -72,8 +72,8 @@ export default function Works() {
                      <Image src={'/lifestyle1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Professional Headshots</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Professional Headshots</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -84,8 +84,8 @@ export default function Works() {
                      <Image src={'/bts1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Behind the Scenes</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Behind the Scenes</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -96,8 +96,8 @@ export default function Works() {
                      <Image src={'/brands1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Brand Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Brand Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -108,8 +108,8 @@ export default function Works() {
                      <Image src={'/group1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Group Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Group Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -120,8 +120,8 @@ export default function Works() {
                      <Image src={'/running1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Running Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Running Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
@@ -132,8 +132,8 @@ export default function Works() {
                      <Image src={'/family1.webp'} alt="Works" fill className="object-cover rounded-lg transition-all duration-300 group-hover:scale-105" />
                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                          <div className="text-white">
-                             <h3 className="text-lg font-semibold mb-2">Family Photography</h3>
-                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg hover:bg-white/30 transition-colors duration-200">
+                             <h3 className="text-lg font-light mb-2">Family Photography</h3>
+                             <button className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 font-light rounded-lg hover:bg-white/30 transition-colors duration-200">
                                  More
                              </button>
                          </div>
