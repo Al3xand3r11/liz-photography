@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { FaTimes, FaBars } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function NavBar() {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     const toggleMobileMenu = () => {
         setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -15,6 +16,27 @@ export default function NavBar() {
         setIsMobileMenuOpen(false);
     }
 
+    useEffect(() => {
+        const handleScroll = () => {
+            // Check if scrolled past the landing section (100vh)
+            const scrollPosition = window.scrollY;
+            const viewportHeight = window.innerHeight;
+            
+            if (scrollPosition > viewportHeight * 0.8) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Check initial scroll position
+        handleScroll();
+        
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <nav className="fixed top-0 left-0 w-full z-50 bg-transparent">
             {/* Desktop Navigation */}
@@ -23,7 +45,7 @@ export default function NavBar() {
                 <div className="flex-1 flex justify-start">
                     <Link 
                         href="#about" 
-                        className="text-white text-lg font-light tracking-wide hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                        className={`text-lg font-light tracking-wide transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                     >
                         About Me
                     </Link>
@@ -33,7 +55,7 @@ export default function NavBar() {
                 <div className="flex-1 flex justify-center">
                     <Link 
                         href="#works" 
-                        className="text-white text-lg font-light tracking-wide hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                        className={`text-lg font-light tracking-wide transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                     >
                         Works
                     </Link>
@@ -43,7 +65,7 @@ export default function NavBar() {
                 <div className="flex-1 flex justify-center">
                     <Link 
                         href="/" 
-                        className="text-white text-3xl font-medium tracking-wider hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                        className={`text-3xl font-light tracking-wider transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                     >
                         Seen By Liz
                     </Link>
@@ -53,7 +75,7 @@ export default function NavBar() {
                 <div className="flex-1 flex justify-center">
                     <Link 
                         href="/archives" 
-                        className="text-white text-lg font-light tracking-wide hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                        className={`text-lg font-light tracking-wide transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                     >
                         Archive
                     </Link>
@@ -63,7 +85,7 @@ export default function NavBar() {
                 <div className="flex-1 flex justify-end">
                     <Link 
                         href="#contact" 
-                        className="text-white text-lg font-light tracking-wide hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                        className={`text-lg font-light tracking-wide transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                     >
                         Contact
                     </Link>
@@ -75,7 +97,7 @@ export default function NavBar() {
                 {/* Mobile Logo */}
                 <Link 
                     href="/" 
-                    className="text-black text-xl font-medium tracking-wider hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                    className={`text-xl font-medium tracking-wider transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                 >
                     Seen By Liz
                 </Link>
@@ -83,7 +105,7 @@ export default function NavBar() {
                 {/* Hamburger Menu Button */}
                 <button
                     onClick={toggleMobileMenu}
-                    className="text-black text-2xl hover:text-white/80 transition-colors duration-300 drop-shadow-lg"
+                    className={`text-2xl transition-colors duration-500 drop-shadow-lg ${isScrolled ? 'text-black hover:text-black/80' : 'text-white hover:text-white/80'}`}
                     aria-label="Toggle mobile menu"
                 >
                     {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
